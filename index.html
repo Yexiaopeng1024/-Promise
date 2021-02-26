@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/promise.js"></script>
+</head>
+<body>
+    <!-- <script>
+       const p = new Promise((resolve,reject)=>{
+
+         setTimeout(() => {
+           /*  resolve(1)// value */
+            reject(2)// reason
+         }, 1000);
+            
+            
+        }).then(
+            value => {
+                console.log('onResolved1()',value);
+            },
+            reason => {
+                console.log('onRejected1()',reason);
+                throw 4;
+            }
+        ).then(
+            value => {
+                console.log('onResolved2()',value);
+            },
+            reason => {
+                console.log('onRejected2()',reason);
+                throw 6
+            }
+        ).catch (
+            reason => {
+                console.log('onRejected3()',reason);
+            }
+        )
+
+    </script> -->
+    <script>
+        const p1 = new Promise.resolve(2);
+        const p2 = new Promise.resolve(Promise.resolve(3));
+        const p3 = new Promise.resolve(Promise.reject(4));
+        const p5 = new Promise.reject(5);
+        const p6 = new Promise.rejectDelay(66,3000)
+       /*  p1.then(value=> {
+            console.log("onResolved()",value);
+        })
+        p2.then(value=> {
+            console.log("onResolved()",value);
+        })
+        p3.catch(reason=> {
+            console.log("onRejected()",reason);
+        }) */
+        p6.then(value=> {
+            console.log("onResolved()",value);
+        },reason=> {
+            console.log("onRejected()",reason);}
+        )
+    </script>
+</body>
+</html>
